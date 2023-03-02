@@ -1,22 +1,31 @@
 let day=document.getElementById('date');
-let times=document.getElementById('time');
+let months=document.getElementById('month');
+let years=document.getElementById('year');
+let hours=document.getElementById('hour');
+let minutes=document.getElementById('minute');
+let seconds=document.getElementById('second');
 let days=new Date();
-day.innerText=`${days.getDate()}: ${days.getMonth()}:${days.getFullYear()}`
 setInterval(()=>
 {
     let date=new Date();
-    times.innerText=`${date.getHours()} : ${date.getMinutes()} : ${date.getSeconds()}`;
+    day.innerText=date.getDate()<10?`0${date.getDate()}`:`${date.getDate()}`; 
+    months.innerHTML=date.getMonth()+1<10?`0${date.getMonth()}`:`${date.getMonth()}`;
+    years.innerHTML=date.getFullYear();
+    minutes.innerHTML=date.getMinutes()<10?`0${date.getMinutes()}`:`${date.getMinutes()}`;
+    seconds.innerHTML=date.getSeconds()<10?`0${date.getSeconds()}`:`${date.getSeconds()}`;
     let amid=document.getElementById('am');
     let pmid=document.getElementById('pm');
     if(date.getHours()<12)
     {
         amid.style.backgroundColor="red";
+        hours.innerText=date.getHours()<10?`0${date.getHours()}`:`${date.getHours()}`;
     }
     else
     {
         pmid.style.backgroundColor="red";
+        hours.innerText=date.getHours()-12<10?`0${date.getHours()-12}`:`${date.getHours()-12}`;
     }
-},);
+},1000);
 let date1=document.getElementById('day1');
 let date2=document.getElementById('day2');
 let date3=document.getElementById('day3');
@@ -48,3 +57,6 @@ switch(days.getDay())
         date7.style.backgroundColor="red";
     break;
 }
+
+
+
